@@ -12,7 +12,7 @@ export const Appcontext = createContext();
 
 export const AppcontextProvider = ({ children }) => {
 
-    const currency = "₹";
+    const currency = "$";
     
     const navigate=useNavigate();
     const [User,setUser]=useState(false);
