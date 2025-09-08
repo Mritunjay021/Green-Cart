@@ -3,6 +3,9 @@ import Product from "../models/product.js";
 import stripe from "stripe";
 import User from "../models/User.js";
 
+// import {cartItems} from useAppContext
+// import { useAppContext } from "../../client/src/context/Appcontext.jsx";
+
 // Register: api/order/cod
 
 export const placeOrderCod = async(req,res)=>{
@@ -120,7 +123,7 @@ export const stripeWebhook = async(req,res)=>{
 
     const stripeInstance = new stripe(process.env.STRIPE_SECRET_KEY)
 
-    const sig = req.header['stripe-signature']
+    const sig = req.headers['stripe-signature']
 
     let event;
 
