@@ -24,6 +24,9 @@ const allowedOrigins = ['http://localhost:5173','https://green-cart-shop.vercel.
 app.post('/stripe',express.raw({type:'application/json'}),stripeWebhook)
 
 // Middleware configurations
+app.post("/api/order/stripe/webhook", express.raw({ type: 'application/json' }), stripeWebhook);
+
+// all other routes still use express.json()
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({origin: allowedOrigins , credentials: true}));
