@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx src/app.ts",
-    "start": "nodemon src/app.ts"
+    "start": "nodemon server.js"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
