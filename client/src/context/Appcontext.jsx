@@ -1,7 +1,7 @@
 import { createContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
-import { dummyProducts } from "../assets/assets";
+// import { dummyProducts } from "../assets/assets";
 import toast from "react-hot-toast";
 import axios from "axios";
 
@@ -32,8 +32,8 @@ export const AppcontextProvider = ({ children }) => {
             }
             else{
                 setisSeller(false);
-            }
-        } catch (error) {
+            }       
+        } catch {
             setisSeller(false);
         }
     }
@@ -65,7 +65,7 @@ export const AppcontextProvider = ({ children }) => {
                 setUser(data.user);
                 setCartItems(data.user.cartItems);
             }
-        } catch (error) {
+        } catch {
             setUser(null);
             // toast.error(error.message);
         }

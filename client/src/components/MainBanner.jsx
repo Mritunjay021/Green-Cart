@@ -10,7 +10,7 @@ import blackarrow from "../assets/black_arrow_icon.svg"
 
 const MainBanner = () => {
   return (
-    <div>
+    <div >
       <img src={Banner} alt="Main Banner" className='w-full hidden md:block' />
       <img src={Bannersm} alt="Main Banner" className='w-full md:hidden ' />
       <div className='absolute inset-0 flex flex-col items-center md:items-start justify-end md:justify-center pb-24 md:pb-0 px-4 md:pl-18 lg:pl-24'>
