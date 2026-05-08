@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx src/app.ts",
+    "build": "tsc",
     "start": "nodemon server.js"
   },
   "dependencies": {
