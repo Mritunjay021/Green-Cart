@@ -1,5 +1,5 @@
 import express from "express";
-import { getIngredients } from "../dist/ingredients.ts";
+import { getIngredients } from "../dist/ingredients.js";
 
 const apiRouter = express.Router();
 
