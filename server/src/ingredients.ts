@@ -40,6 +40,6 @@ Begin now.
   if (!text) {
     throw new Error("Empty response from Gemini");
   }
-
+  
   return text.trim();
 }
