@@ -39,7 +39,7 @@ export const productList = async(req,res)=>{
         const products = await Product.find({});
         res.json({success:true, product:products});
     } catch (error) {
-        console.log(error.message);
+        console.log(error.message,"product list error");
         res.json({success:false,message:error.message});
     }
 }
