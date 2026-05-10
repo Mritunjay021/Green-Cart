@@ -1,59 +1,3 @@
-// import express from 'express';
-// import cookieParser from 'cookie-parser';
-// import cors from 'cors';
-// import connectDB from './configs/db.js';
-// import "dotenv/config";
-// import userRouter from './routes/userRoute.js';
-// import sellerRouter from './routes/sellerRoute.js';
-// import connectCloudinary from './configs/cloudinary.js';
-// import productRouter from './routes/productRoute.js';
-// import cartRouter from './routes/cartRoute.js';
-// import addressRouter from './routes/addressRoute.js';
-// import orderRouter from './routes/orderRoute.js';
-// import apiRouter from './routes/apiRoute.js';
-// import { stripeWebhook } from './controllers/orderController.js';
-
-// const app = express();
-// const PORT = process.env.PORT || 5000;
-
-// await connectDB();
-// await connectCloudinary();
-
-// const allowedOrigins = ['http://localhost:5173','https://green-cart-eight.vercel.app']
-
-
-// app.post('/stripe',express.raw({type:'application/json'}),stripeWebhook)
-
-// // Middleware configurations
-// app.post("/api/order/stripe/webhook", express.raw({ type: 'application/json' }), stripeWebhook);
-
-// // all other routes still use express.json()
-// app.use(express.json());
-// app.use(cookieParser());
-// app.use(cors({origin: allowedOrigins , credentials: true}));
-
-// app.get('/',(req,res)=>{
-//   res.send('Hello World!');
-// });
-
-// app.use('/api/user',userRouter);
-
-// app.use('/api/seller',sellerRouter);
-
-// app.use('/api/product',productRouter)
-
-// app.use('/api/cart',cartRouter)
-
-// app.use('/api/address',addressRouter)
-
-// app.use('/api/order',orderRouter)
-
-// app.use('/api/assistant', apiRouter)
-
-// app.listen(PORT,()=>{
-//   console.log(`Server is running on port http://localhost:${PORT}`);
-// });
-
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
@@ -70,37 +14,42 @@ import apiRouter from './routes/apiRoute.js';
 import { stripeWebhook } from './controllers/orderController.js';
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 
-// ✅ Wrap in async init instead of top-level await
-const init = async () => {
-  await connectDB();
-  await connectCloudinary();
-};
-init();
+await connectDB();
+await connectCloudinary();
 
-const allowedOrigins = [
-  'http://localhost:5173',
-  'https://green-cart-eight.vercel.app'
-];
+const allowedOrigins = ['http://localhost:5173','https://green-cart-eight.vercel.app']
 
-app.post('/stripe', express.raw({ type: 'application/json' }), stripeWebhook);
+
+app.post('/stripe',express.raw({type:'application/json'}),stripeWebhook)
+
+// Middleware configurations
 app.post("/api/order/stripe/webhook", express.raw({ type: 'application/json' }), stripeWebhook);
 
+// all other routes still use express.json()
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: allowedOrigins, credentials: true }));
+app.use(cors({origin: allowedOrigins , credentials: true}));
 
-app.get('/', (req, res) => {
+app.get('/',(req,res)=>{
   res.send('Hello World!');
 });
 
-app.use('/api/user', userRouter);
-app.use('/api/seller', sellerRouter);
-app.use('/api/product', productRouter);
-app.use('/api/cart', cartRouter);
-app.use('/api/address', addressRouter);
-app.use('/api/order', orderRouter);
-app.use('/api/assistant', apiRouter);
+app.use('/api/user',userRouter);
 
-// ✅ Export for Vercel instead of app.listen()
-export default app;
+app.use('/api/seller',sellerRouter);
+
+app.use('/api/product',productRouter)
+
+app.use('/api/cart',cartRouter)
+
+app.use('/api/address',addressRouter)
+
+app.use('/api/order',orderRouter)
+
+app.use('/api/assistant', apiRouter)
+
+app.listen(PORT,()=>{
+  console.log(`Server is running on port http://localhost:${PORT}`);
+});
